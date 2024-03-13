@@ -29,22 +29,22 @@ jobs:
           git config --global user.name "npm CLI robot"
       - name: Setup Node
         uses: actions/setup-node@v3
+        id: node
         with:
-          node-version: 18.x
-      - name: Install npm@8
-        run: npm i --prefer-online --no-fund --no-audit -g npm@8
-      - name: npm Version
-        run: npm -v
+          node-version: 20.x
+          check-latest: contains('20.x', '.x')
+      - name: Install Latest npm
+        uses: ./.github/actions/install-latest-npm
+        with:
+          node: ${{ steps.node.outputs.node-version }}
       - name: Install Dependencies
         run: npm i --ignore-scripts --no-audit --no-fund
       - name: Run Commitlint on Commits
         id: commit
         continue-on-error: true
-        run: |
-          npx --offline commitlint -V --from 'origin/${{ github.base_ref }}' --to ${{ github.event.pull_request.head.sha }}
+        run: npx --offline commitlint -V --from 'origin/${{ github.base_ref }}' --to ${{ github.event.pull_request.head.sha }}
       - name: Run Commitlint on PR Title
         if: steps.commit.outcome == 'failure'
         env:
           PR_TITLE: ${{ github.event.pull_request.title }}
-        run: |
-          echo '$PR_TITLE' | npx --offline commitlint -V
+        run: echo "$PR_TITLE" | npx --offline commitlint -V
