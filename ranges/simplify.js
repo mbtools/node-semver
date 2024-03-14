@@ -1,9 +1,10 @@
 // given a set of versions and a range, create a "simplified" range
 // that includes the same versions that the original range does
 // If the original range is shorter than the simplified one, return that.
-const satisfies = require('../functions/satisfies.js')
 const compare = require('../functions/compare.js')
-module.exports = (versions, range, options) => {
+const satisfies = require('../functions/satisfies.js')
+
+const simplify = (versions, range, options) => {
   const set = []
   let first = null
   let prev = null
@@ -45,3 +46,5 @@ module.exports = (versions, range, options) => {
   const original = typeof range.raw === 'string' ? range.raw : String(range)
   return simplified.length < original.length ? simplified : range
 }
+
+module.exports = simplify

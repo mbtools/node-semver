@@ -1,5 +1,5 @@
-const SemVer = require('../classes/semver')
 const Range = require('../classes/range')
+const SemVer = require('../classes/semver')
 const gt = require('../functions/gt')
 
 const minVersion = (range, loose) => {
@@ -58,4 +58,5 @@ const minVersion = (range, loose) => {
 
   return null
 }
+
 module.exports = minVersion

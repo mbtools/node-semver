@@ -1,4 +1,5 @@
 const Range = require('../classes/range')
+
 const satisfies = (version, range, options) => {
   try {
     range = new Range(range, options)
@@ -7,4 +8,5 @@ const satisfies = (version, range, options) => {
   }
   return range.test(version)
 }
+
 module.exports = satisfies

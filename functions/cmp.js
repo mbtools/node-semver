@@ -1,9 +1,9 @@
 const eq = require('./eq')
-const neq = require('./neq')
 const gt = require('./gt')
 const gte = require('./gte')
 const lt = require('./lt')
 const lte = require('./lte')
+const neq = require('./neq')
 
 const cmp = (a, op, b, loose) => {
   switch (op) {
@@ -49,4 +49,5 @@ const cmp = (a, op, b, loose) => {
       throw new TypeError(`Invalid operator: ${op}`)
   }
 }
+
 module.exports = cmp

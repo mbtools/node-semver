@@ -1,4 +1,5 @@
 const Range = require('../classes/range')
+
 const validRange = (range, options) => {
   try {
     // Return '*' instead of '' so that truthiness works.
@@ -8,4 +9,5 @@ const validRange = (range, options) => {
     return null
   }
 }
+
 module.exports = validRange

@@ -1,5 +1,5 @@
-const SemVer = require('../classes/semver')
 const Range = require('../classes/range')
+const SemVer = require('../classes/semver')
 
 const maxSatisfying = (versions, range, options) => {
   let max = null
@@ -22,4 +22,5 @@ const maxSatisfying = (versions, range, options) => {
   })
   return max
 }
+
 module.exports = maxSatisfying

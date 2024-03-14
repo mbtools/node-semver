@@ -1,9 +1,9 @@
-const debug = require('../internal/debug')
 const { MAX_LENGTH, MAX_SAFE_INTEGER } = require('../internal/constants')
+const debug = require('../internal/debug')
+const { compareIdentifiers } = require('../internal/identifiers')
+const parseOptions = require('../internal/parse-options')
 const { safeRe: re, t } = require('../internal/re')
 
-const parseOptions = require('../internal/parse-options')
-const { compareIdentifiers } = require('../internal/identifiers')
 class SemVer {
   constructor (version, options) {
     options = parseOptions(options)

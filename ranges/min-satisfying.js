@@ -1,5 +1,6 @@
-const SemVer = require('../classes/semver')
 const Range = require('../classes/range')
+const SemVer = require('../classes/semver')
+
 const minSatisfying = (versions, range, options) => {
   let min = null
   let minSV = null
@@ -21,4 +22,5 @@ const minSatisfying = (versions, range, options) => {
   })
   return min
 }
+
 module.exports = minSatisfying

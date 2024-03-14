@@ -1,5 +1,5 @@
-const SemVer = require('../classes/semver')
 const parse = require('./parse')
+const SemVer = require('../classes/semver')
 const { safeRe: re, t } = require('../internal/re')
 
 const coerce = (version, options) => {
@@ -57,4 +57,5 @@ const coerce = (version, options) => {
 
   return parse(`${major}.${minor}.${patch}${prerelease}${build}`, options)
 }
+
 module.exports = coerce

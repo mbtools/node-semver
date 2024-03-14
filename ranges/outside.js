@@ -1,12 +1,13 @@
-const SemVer = require('../classes/semver')
 const Comparator = require('../classes/comparator')
-const { ANY } = Comparator
+const SemVer = require('../classes/semver')
 const Range = require('../classes/range')
-const satisfies = require('../functions/satisfies')
 const gt = require('../functions/gt')
+const gte = require('../functions/gte')
 const lt = require('../functions/lt')
 const lte = require('../functions/lte')
-const gte = require('../functions/gte')
+const satisfies = require('../functions/satisfies')
+
+const { ANY } = Comparator
 
 const outside = (version, range, hilo, options) => {
   version = new SemVer(version, options)
