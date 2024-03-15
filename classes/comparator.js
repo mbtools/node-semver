@@ -1,10 +1,3 @@
-const Range = require('./range')
-const SemVer = require('./semver')
-const cmp = require('../functions/cmp')
-const debug = require('../internal/debug')
-const parseOptions = require('../internal/parse-options')
-const { safeRe: re, t } = require('../internal/re')
-
 const ANY = Symbol('SemVer ANY')
 
 // hoisted class for cyclic dependency
@@ -140,3 +133,10 @@ class Comparator {
 }
 
 module.exports = Comparator
+
+const Range = require('./range')
+const SemVer = require('./semver')
+const cmp = require('../functions/cmp')
+const debug = require('../internal/debug')
+const parseOptions = require('../internal/parse-options')
+const { safeRe: re, t } = require('../internal/re')

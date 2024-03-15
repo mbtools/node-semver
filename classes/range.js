@@ -1,20 +1,3 @@
-const LRU = require('lru-cache')
-
-const Comparator = require('./comparator')
-const SemVer = require('./semver')
-const { FLAG_INCLUDE_PRERELEASE, FLAG_LOOSE } = require('../internal/constants')
-const debug = require('../internal/debug')
-const parseOptions = require('../internal/parse-options')
-const {
-  safeRe: re,
-  t,
-  comparatorTrimReplace,
-  tildeTrimReplace,
-  caretTrimReplace,
-} = require('../internal/re')
-
-const cache = new LRU({ max: 1000 })
-
 // hoisted class for cyclic dependency
 class Range {
   constructor (range, options) {
@@ -212,6 +195,24 @@ class Range {
     return false
   }
 }
+
+module.exports = Range
+
+const LRU = require('lru-cache')
+const cache = new LRU({ max: 1000 })
+
+const parseOptions = require('../internal/parse-options')
+const Comparator = require('./comparator')
+const debug = require('../internal/debug')
+const SemVer = require('./semver')
+const {
+  safeRe: re,
+  t,
+  comparatorTrimReplace,
+  tildeTrimReplace,
+  caretTrimReplace,
+} = require('../internal/re')
+const { FLAG_INCLUDE_PRERELEASE, FLAG_LOOSE } = require('../internal/constants')
 
 const isNullSet = c => c.value === '<0.0.0-0'
 const isAny = c => c.value === ''
