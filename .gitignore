@@ -29,6 +29,7 @@ tap-testdir*/
 !/package.json
 !/preload.js
 !/range.bnf
+!/range.ne
 !/ranges/
 !/README*
 !/release-please-config.json

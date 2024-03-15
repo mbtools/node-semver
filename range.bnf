@@ -1,4 +1,4 @@
-/* This is the EBNF representation for the grammar used by the npm semver package */
+/* This is the EBNF representation of the grammar used by the npm semver package */
 /* https://www.npmjs.com/package/semver */
 
 <valid_range> ::= <range>

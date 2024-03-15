@@ -373,13 +373,14 @@ zero.
 
 ### Range Grammar
 
-Putting all this together, here is a Backus-Naur grammar 
-([EBNF](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form))
-for ranges, for the benefit of parser authors ([playground]):
+Putting all this together, here is a Backus-Naur grammar
+for ranges, for the benefit of parser authors 
+([EBNF](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form),
+[download](range.bnf), 
+[playground](https://bnfplayground.pauliankline.com/)):
 
 ```bnf
-/* This is the EBNF representation for the grammar used by the npm semver package */
-/* https://www.npmjs.com/package/semver */
+/* This is the EBNF representation of the grammar used by the npm semver package */
 
 <valid_range> ::= <range>
                 | <range> <space>+ "||" <space>+ <valid_range>
@@ -481,6 +482,11 @@ for ranges, for the benefit of parser authors ([playground]):
 <letter> ::= [A-Z] | [a-z]
 
 ```
+
+The grammar is also available as Nearley Parser Generator Language
+([nearley](https://nearley.js.org/),
+[download](range.ne),
+[playground](https://omrelli.ug/nearley-playground/)).
 
 ## Functions
 
@@ -725,10 +731,3 @@ The following modules are available:
 * `require('semver/ranges/outside')`
 * `require('semver/ranges/to-comparators')`
 * `require('semver/ranges/valid')`
-
-<!-- 
-BNF Playground by Paul Kline
-https://github.com/paul-kline/bnf-playground 
--->
-
-[playground]: https://bnfplayground.pauliankline.com/
