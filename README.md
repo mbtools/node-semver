@@ -140,7 +140,10 @@ multiple versions to the utility will just sort them.
 A "version" is described by the `v2.0.0` specification found at
 <https://semver.org/>.
 
-A leading `"="` or `"v"` character is stripped off and ignored.
+A leading `"="` or `"v"` character is stripped off and ignored. Note that
+these prefixes are kept for compatibility with the `v1.0.0`` semver 
+specification but will be deprecated with the next major release of this
+package.
 
 ## Ranges
 
@@ -404,7 +407,7 @@ for ranges, for the benefit of parser authors
 
 <prefix> ::= "v" | "=" | "v="
 
-<plain_xrange> ::= <prefix>? <xrange_identifier> 
+<plain_xrange> ::= <prefix>? <xrange_identifier>
                  ( "." <xrange_identifier> )? 
                  ( "." <xrange_identifier> )? <qualifier>?
 
@@ -420,7 +423,7 @@ for ranges, for the benefit of parser authors
 
 <space> ::= " " | "\n" | "\r" | "\t"
 
-/* The following is equivalent to the semver grammar at https://semver.org */
+/* The following is equivalent to the semver v2 grammar at https://semver.org */
 
 <valid_semver> ::= <version_core>
                  | <version_core> "-" <pre_release>
