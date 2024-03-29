@@ -18,7 +18,8 @@ comparator -> gtlt space:* full_version
 full_version -> "v":? valid_semver
 space -> " " |  "\n" |  "\r" |  "\t"
 
-# The following is equivalent to the semver v2 grammar at https://semver.org 
+# The following is equivalent to the semver v2 grammar 
+# https://semver.org 
 
 valid_semver -> version_core | version_core  "-" pre_release | version_core  "+" build | version_core  "-" pre_release  "+" build
 version_core -> major  "." minor  "." patch

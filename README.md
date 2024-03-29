@@ -379,116 +379,152 @@ zero.
 Putting all this together, here is a Backus-Naur grammar
 for ranges, for the benefit of parser authors 
 ([EBNF](https://en.wikipedia.org/wiki/Extended_Backus%E2%80%93Naur_form),
-[download](range.bnf), 
+[download](https://raw.githubusercontent.com/npm/node-semver/main/range.bnf), 
 [playground](https://bnfplayground.pauliankline.com/)):
 
 ```bnf
-/* This is the EBNF representation of the grammar used by the npm semver package */
+/* This is the grammar used by the npm semver package in EBNF */
+/* https://www.npmjs.com/package/semver */
 
-<valid_range> ::= <range>
-                | <range> <space>+ "||" <space>+ <valid_range>
+<valid_range> ::=
+        <range>
+      | <range> <space>+ "||" <space>+ <valid_range>
 
-<range> ::= <hyphenated_ranges>
-          | <list_of_ranges>
+<range> ::=
+        <hyphenated_ranges>
+      | <list_of_ranges>
 
-<hyphenated_ranges> ::= <plain_xrange> <space>+ "-" <space>+ <plain_xrange>
+<hyphenated_ranges> ::=
+        <plain_xrange> <space>+ "-" <space>+ <plain_xrange>
 
-<list_of_ranges> ::= <simple_range>
-                   | <simple_range> <space>+ <list_of_ranges>
+<list_of_ranges> ::=
+        <simple_range>
+      | <simple_range> <space>+ <list_of_ranges>
 
-<simple_range>  ::= <xrange>
-                  | <plain_xrange>
-                  | <tilde_range>
-                  | <caret_range>
+<simple_range> ::=
+        <xrange>
+      | <plain_xrange>
+      | <tilde_range>
+      | <caret_range>
 
-<xrange> ::= <gtlt> <space>* <plain_xrange>
+<xrange> ::=
+        <gtlt> <space>* <plain_xrange>
 
-<gtlt> ::= "<" | "<=" | "=" | ">=" | ">"
+<gtlt> ::=
+        "<" | "<=" | "=" | ">=" | ">"
 
-<prefix> ::= "v" | "=" | "v="
+<prefix> ::=
+        "v" | "=" | "v="
 
-<plain_xrange> ::= <prefix>? <xrange_identifier>
-                 ( "." <xrange_identifier> )? 
-                 ( "." <xrange_identifier> )? <qualifier>?
+<plain_xrange> ::=
+        <prefix>? <xrange_identifier> 
+        ( "." <xrange_identifier> )? 
+        ( "." <xrange_identifier> )? <qualifier>?
 
-<xrange_identifier> ::= "x" | "X" | "*" | <numeric_identifier>
+<xrange_identifier> ::=
+        "x" | "X" | "*" | <numeric_identifier>
 
-<tilde_range> ::= "~" ">"? <plain_xrange>
+<tilde_range> ::=
+        "~" ">"? <plain_xrange>
 
-<caret_range> ::= "^" <plain_xrange>
+<caret_range> ::=
+        "^" <plain_xrange>
 
-<comparator> ::= <gtlt> <space>* <full_version>
+<comparator> ::=
+        <gtlt> <space>* <full_version>
 
-<full_version> ::= "v"? <valid_semver>
+<full_version> ::=
+        "v"? <valid_semver>
 
-<space> ::= " " | "\n" | "\r" | "\t"
+<space> ::=
+        " " | "\n" | "\r" | "\t"
 
-/* The following is equivalent to the semver v2 grammar at https://semver.org */
+/* The following is equivalent to the semver v2 grammar */
+/* https://semver.org */
 
-<valid_semver> ::= <version_core>
-                 | <version_core> "-" <pre_release>
-                 | <version_core> "+" <build>
-                 | <version_core> "-" <pre_release> "+" <build>
+<valid_semver> ::=
+        <version_core>
+      | <version_core> "-" <pre_release>
+      | <version_core> "+" <build>
+      | <version_core> "-" <pre_release> "+" <build>
 
-<version_core> ::= <major> "." <minor> "." <patch>
+<version_core> ::=
+        <major> "." <minor> "." <patch>
 
-<major> ::= <numeric_identifier>
+<major> ::=
+        <numeric_identifier>
 
-<minor> ::= <numeric_identifier>
+<minor> ::=
+        <numeric_identifier>
 
-<patch> ::= <numeric_identifier>
+<patch> ::=
+        <numeric_identifier>
 
-<qualifier> ::= "-" <pre_release>
-              | "+" <build>
-              | "-" <pre_release> "+" <build>
+<qualifier> ::=
+        "-" <pre_release>
+      | "+" <build>
+      | "-" <pre_release> "+" <build>
 
-<pre_release> ::= <dot_separated_pre_release_identifiers>
+<pre_release> ::=
+        <dot_separated_pre_release_identifiers>
 
-<dot_separated_pre_release_identifiers> ::= <pre_release_identifier>
-                                          | <pre_release_identifier> "." <dot_separated_pre_release_identifiers>
+<dot_separated_pre_release_identifiers> ::=
+        <pre_release_identifier>
+      | <pre_release_identifier> "." <dot_separated_pre_release_identifiers>
 
-<build> ::= <dot_separated_build_identifiers>
+<build> ::=
+        <dot_separated_build_identifiers>
 
-<dot_separated_build_identifiers> ::= <build_identifier>
-                                    | <build_identifier> "." <dot_separated_build_identifiers>
+<dot_separated_build_identifiers> ::=
+        <build_identifier>
+      | <build_identifier> "." <dot_separated_build_identifiers>
 
-<pre_release_identifier> ::= <alphanumeric_identifier>
-                           | <numeric_identifier>
+<pre_release_identifier> ::=
+        <alphanumeric_identifier>
+      | <numeric_identifier>
 
-<build_identifier> ::= <alphanumeric_identifier>
-                     | <digits>
+<build_identifier> ::=
+        <alphanumeric_identifier>
+      | <digits>
 
-<alphanumeric_identifier> ::= <non_digit>
-                            | <non_digit> <identifier_characters>
-                            | <identifier_characters> <non_digit>
-                            | <identifier_characters> <non_digit> <identifier_characters>
+<alphanumeric_identifier> ::=
+        <non_digit>
+      | <non_digit> <identifier_characters>
+      | <identifier_characters> <non_digit>
+      | <identifier_characters> <non_digit> <identifier_characters>
 
-<numeric_identifier> ::= "0"
-                       | <positive_digit>
-                       | <positive_digit> <digits>
+<numeric_identifier> ::=
+        "0"
+      | <positive_digit>
+      | <positive_digit> <digits>
 
-<identifier_characters> ::= <identifier_character>+
+<identifier_characters> ::=
+        <identifier_character>+
 
-<identifier_character> ::= <digit>
-                         | <non_digit>
+<identifier_character> ::=
+        <digit>
+      | <non_digit>
 
-<non_digit> ::= <letter>
-              | "-"
+<non_digit> ::=
+        <letter> | "-"
 
-<digits> ::= <digit>+
+<digits> ::=
+        <digit>+
 
-<digit> ::= "0"
-          | <positive_digit>
+<digit> ::=
+        "0" | <positive_digit>
 
-<positive_digit> ::= [1-9]
+<positive_digit> ::=
+        [1-9]
 
-<letter> ::= [A-Z] | [a-z]
+<letter> ::=
+        [A-Z] | [a-z]
 
 ```
 
 The grammar is also available as Nearley Parser Generator Language
 ([nearley](https://nearley.js.org/),
-[download](range.ne),
+[download](https://raw.githubusercontent.com/npm/node-semver/main/range.ne),
 [playground](https://omrelli.ug/nearley-playground/)).
 
 ## Functions
