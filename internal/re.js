@@ -136,18 +136,16 @@ createToken('XRANGEIDENTIFIERLOOSE', `${src[t.NUMERICIDENTIFIERLOOSE]}|x|X|\\*`)
 createToken('XRANGEIDENTIFIER', `${src[t.NUMERICIDENTIFIER]}|x|X|\\*`)
 
 createToken('XRANGEPLAIN', `[v=\\s]*(${src[t.XRANGEIDENTIFIER]})` +
-                   `(?:\\.(${src[t.XRANGEIDENTIFIER]})` +
-                   `(?:\\.(${src[t.XRANGEIDENTIFIER]})` +
-                   `(?:${src[t.PRERELEASE]})?${
-                     src[t.BUILD]}?` +
-                   `)?)?`)
+                   `(?:\\.(${src[t.XRANGEIDENTIFIER]}))?` +
+                   `(?:\\.(${src[t.XRANGEIDENTIFIER]}))?` +
+                   `(?:${src[t.PRERELEASE]})?` +
+                   `${src[t.BUILD]}?`)
 
 createToken('XRANGEPLAINLOOSE', `[v=\\s]*(${src[t.XRANGEIDENTIFIERLOOSE]})` +
-                        `(?:\\.(${src[t.XRANGEIDENTIFIERLOOSE]})` +
-                        `(?:\\.(${src[t.XRANGEIDENTIFIERLOOSE]})` +
-                        `(?:${src[t.PRERELEASELOOSE]})?${
-                          src[t.BUILD]}?` +
-                        `)?)?`)
+                        `(?:\\.(${src[t.XRANGEIDENTIFIERLOOSE]}))?` +
+                        `(?:\\.(${src[t.XRANGEIDENTIFIERLOOSE]}))?` +
+                        `(?:${src[t.PRERELEASELOOSE]})?` +
+                        `${src[t.BUILD]}?`)
 
 createToken('XRANGE', `^${src[t.GTLT]}\\s*${src[t.XRANGEPLAIN]}$`)
 createToken('XRANGELOOSE', `^${src[t.GTLT]}\\s*${src[t.XRANGEPLAINLOOSE]}$`)
