@@ -140,10 +140,9 @@ multiple versions to the utility will just sort them.
 A "version" is described by the `v2.0.0` specification found at
 <https://semver.org/>.
 
-A leading `"="` or `"v"` character is stripped off and ignored. Note that
-these prefixes are kept for compatibility with the `v1.0.0`` semver 
-specification but will be deprecated with the next major release of this
-package.
+A leading `"="` or `"v"` character is stripped off and ignored. These
+prefixes are kept for compatibility with the `v1.0.0` of the semver
+specification but should not be used anymore.
 
 ## Ranges
 
