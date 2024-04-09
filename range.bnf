@@ -10,46 +10,50 @@
       | <list_of_ranges>
 
 <hyphenated_ranges> ::=
-        <plain_xrange> <space>+ "-" <space>+ <plain_xrange>
+        <partial_version> <space>+ "-" <space>+ <partial_version>
 
 <list_of_ranges> ::=
         <simple_range>
       | <simple_range> <space>+ <list_of_ranges>
 
 <simple_range> ::=
-        <xrange>
-      | <plain_xrange>
+        <full_version>
+      | <partial_version>
+      | <primitive_range>
       | <tilde_range>
       | <caret_range>
 
-<xrange> ::=
-        <gtlt> <space>* <plain_xrange>
+<full_version> ::=
+        <prefix>? <valid_semver>
 
-<gtlt> ::=
-        "<" | "<=" | "=" | ">=" | ">"
+<partial_version> ::=
+        <prefix>? <partial_semver> <qualifier>?
 
-<prefix> ::=
-        "v" | "=" | "v="
+<partial_semver> ::=
+        <placeholder>        ( "." <placeholder> )?     ( "." <placeholder> )?
+      | <numeric_identifier> ( "." <placeholder> )?     ( "." <placeholder> )?
+      | <numeric_identifier>   "." <numeric_identifier> ( "." <placeholder> )?
 
-<plain_xrange> ::=
-        <prefix>? <xrange_identifier> 
-        ( "." <xrange_identifier> )? 
-        ( "." <xrange_identifier> )? <qualifier>?
-
-<xrange_identifier> ::=
-        "x" | "X" | "*" | <numeric_identifier>
+<primitive_range> ::=
+        <gtlt> <space>* <partial_version>
 
 <tilde_range> ::=
-        "~" ">"? <plain_xrange>
+        "~" ">"? <space>* <partial_version>
 
 <caret_range> ::=
-        "^" <plain_xrange>
+        "^" <space>* <partial_version>
 
 <comparator> ::=
         <gtlt> <space>* <full_version>
 
-<full_version> ::=
-        "v"? <valid_semver>
+<prefix> ::=
+        "v" 
+
+<placeholder> ::=
+        "x" | "X" | "*"
+
+<gtlt> ::=
+        "<" | "<=" | "=" | ">=" | ">"
 
 <space> ::=
         " " | "\n" | "\r" | "\t"
