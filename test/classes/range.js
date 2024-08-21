@@ -82,6 +82,15 @@ test('tostrings', (t) => {
   t.end()
 })
 
+test('formatted value is calculated lazily and cached', (t) => {
+  const r = new Range('>= v1.2.3')
+  t.equal(r.formatted, undefined)
+  t.equal(r.format(), '>=1.2.3')
+  t.equal(r.formatted, '>=1.2.3')
+  t.equal(r.format(), '>=1.2.3')
+  t.end()
+})
+
 test('ranges intersect', (t) => {
   rangeIntersection.forEach(([r0, r1, expect]) => {
     t.test(`${r0} <~> ${r1}`, t => {
@@ -103,5 +112,15 @@ test('missing range parameter in range intersect', (t) => {
     new Range('1.0.0').intersects()
   }, new TypeError('a Range is required'),
   'throws type error')
+  t.end()
+})
+
+test('cache', (t) => {
+  const cached = Symbol('cached')
+  const r1 = new Range('1.0.0')
+  r1.set[0][cached] = true
+  const r2 = new Range('1.0.0')
+  t.equal(r1.set[0][cached], true)
+  t.equal(r2.set[0][cached], true) // Will be true, showing it's cached.
   t.end()
 })
