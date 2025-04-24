@@ -32,6 +32,7 @@ module.exports = [
   ['1.2.3-alpha.9.beta', 'prerelease', '1.2.3-alpha.10.beta'],
   ['1.2.3-alpha.10.beta', 'prerelease', '1.2.3-alpha.11.beta'],
   ['1.2.3-alpha.11.beta', 'prerelease', '1.2.3-alpha.12.beta'],
+  ['1.0.0', 'prepatch', '1.0.1-alpha.1.1a.0', null, 'alpha.1.1a'],
   ['1.2.0', 'prepatch', '1.2.1-0'],
   ['1.2.0-1', 'prepatch', '1.2.1-0'],
   ['1.2.0', 'preminor', '1.3.0-0'],
@@ -40,7 +41,12 @@ module.exports = [
   ['1.2.3-1', 'premajor', '2.0.0-0'],
   ['1.2.0-1', 'minor', '1.2.0'],
   ['1.0.0-1', 'major', '1.0.0'],
+  ['1.0.0-1', 'release', '1.0.0'],
+  ['1.2.0-1', 'release', '1.2.0'],
+  ['1.2.3-1', 'release', '1.2.3'],
+  ['1.2.3', 'release', null],
 
+  // [version, inc, result, identifierIndex, loose, identifier]
   ['1.2.3', 'major', '2.0.0', false, 'dev'],
   ['1.2.3', 'minor', '1.3.0', false, 'dev'],
   ['1.2.3', 'patch', '1.2.4', false, 'dev'],
@@ -88,7 +94,7 @@ module.exports = [
   ['1.2.3-1.1', 'prerelease', '1.2.3-1.2', false, '1'],
   ['1.2.3-1.1', 'prerelease', '1.2.3-2.0', false, '2'],
 
-  // [version, inc, result, identifierIndex, loose, identifier]
+  // [version, inc, result, identifierIndex, loose, identifier, identifierBase]
   ['1.2.0-1', 'prerelease', '1.2.0-alpha.0', false, 'alpha', '0'],
   ['1.2.1', 'prerelease', '1.2.2-alpha.0', false, 'alpha', '0'],
   ['0.2.0', 'prerelease', '0.2.1-alpha.0', false, 'alpha', '0'],
@@ -124,4 +130,7 @@ module.exports = [
   ['1.2.0-dev', 'prepatch', '1.2.1-dev', false, 'dev', false],
   ['1.2.0', 'prerelease', null, false, '', false],
   ['1.0.0-rc.1+build.4', 'prerelease', '1.0.0-rc.2', 'rc', false],
+  ['1.2.0', 'prerelease', null, false, 'invalid/preid'],
+  ['1.2.0', 'prerelease', null, false, 'invalid+build'],
+  ['1.2.0beta', 'prerelease', null, { loose: true }, 'invalid/preid'],
 ]
