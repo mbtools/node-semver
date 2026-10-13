@@ -303,6 +303,24 @@ Object {
 }
 `
 
+exports[`test/bin/semver.js TAP inc tests > -i invalid 1.0.0 1`] = `
+Object {
+  "code": 0,
+  "err": "Invalid value for -i; defaulting to 'patch'. This may become a failure in future major versions.\\n",
+  "out": "1.0.1\\n",
+  "signal": null,
+}
+`
+
+exports[`test/bin/semver.js TAP inc tests > -i major -i minor 1.0.0 1`] = `
+Object {
+  "code": 0,
+  "err": "",
+  "out": "1.1.0\\n",
+  "signal": null,
+}
+`
+
 exports[`test/bin/semver.js TAP inc tests > -i major 1.0.0 1`] = `
 Object {
   "code": 0,
@@ -348,7 +366,7 @@ Object {
 }
 `
 
-exports[`test/bin/semver.js TAP inc tests > -i release 1.0.0-pre`] = `
+exports[`test/bin/semver.js TAP inc tests > -i release 1.0.0-pre 1`] = `
 Object {
   "code": 0,
   "err": "",
@@ -454,11 +472,24 @@ Object {
 }
 `
 
+exports[`test/bin/semver.js TAP sorting and filtering > 1.2.3beta -l 1`] = `
+Object {
+  "code": 0,
+  "err": "",
+  "out": "1.2.3-beta\\n",
+  "signal": null,
+}
+`
+
 exports[`test/bin/semver.js TAP sorting and filtering > 1.2.3foo 1.2.3-bar -l 1`] = `
 Object {
   "code": 0,
   "err": "",
-  "out": "1.2.3-bar\\n",
+  "out": String(
+    1.2.3-bar
+    1.2.3-foo
+    
+  ),
   "signal": null,
 }
 `
@@ -477,6 +508,7 @@ Object {
   "code": 0,
   "err": "",
   "out": String(
+    2.0.0-asdf
     2.3.4-beta
     2.3.4
     
