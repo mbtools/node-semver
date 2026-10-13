@@ -1,4 +1,5 @@
 'use strict'
+
 const t = require('tap')
 
 const thisVersion = require('../../package.json').version
@@ -32,6 +33,9 @@ t.test('inc tests', t => Promise.all([
   ['-i', 'premajor', '1.0.0', '--preid=beta', '-n', '1'],
   ['-i', 'premajor', '1.0.0', '--preid=beta', '-n', 'false'],
   ['-i', '1.2.3'],
+  ['-i', 'release', '1.0.0-pre'],
+  ['-i', 'major', '-i', 'minor', '1.0.0'], // last -i "wins"
+  ['-i', 'invalid', '1.0.0'], // invalid -i value, should warn
 ].map(args => t.resolveMatchSnapshot(run(args), args.join(' ')))))
 
 t.test('help output', t => Promise.all([
@@ -48,6 +52,7 @@ t.test('sorting and filtering', t => Promise.all([
   ['1.2.3', '-v', '3.2.1', '--version', '2.3.4', '-rv'],
   ['1.2.3foo', '1.2.3-bar'],
   ['1.2.3foo', '1.2.3-bar', '-l'],
+  ['1.2.3beta', '-l'],
   ['1.2.3', '3.2.1', '-r', '2.x', '2.3.4'],
   ['1.2.3', '3.2.1', '2.3.4', '2.3.4-beta', '2.0.0asdf', '-r', '2.x'],
   ['1.2.3', '3.2.1', '2.3.4', '2.3.4-beta', '2.0.0asdf', '-r', '2.x', '-p'],

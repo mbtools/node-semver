@@ -1,5 +1,68 @@
 # Changelog
 
+## [7.8.5](https://github.com/npm/node-semver/compare/v7.8.4...v7.8.5) (2026-06-19)
+### Bug Fixes
+* [`9c8692a`](https://github.com/npm/node-semver/commit/9c8692ae05416e9dbe88d95ffe2b80e6964550fe) [#878](https://github.com/npm/node-semver/pull/878) include prereleases in tilde range lower bound with includePrerelease (#878) (@chatman-media)
+
+## [7.8.4](https://github.com/npm/node-semver/compare/v7.8.3...v7.8.4) (2026-06-09)
+### Bug Fixes
+* [`e583226`](https://github.com/npm/node-semver/commit/e583226b165edd6530502cf731eda334527af6fe) [#874](https://github.com/npm/node-semver/pull/874) reject numeric segments after x-ranges (@pupuking723)
+
+## [7.8.3](https://github.com/npm/node-semver/compare/v7.8.2...v7.8.3) (2026-06-08)
+### Bug Fixes
+* [`046da7f`](https://github.com/npm/node-semver/commit/046da7f527cc72a482b5dea8cb59392be65bf186) [#872](https://github.com/npm/node-semver/pull/872) align caret includePrerelease lower bounds (#872) (@wayyoungboy)
+### Chores
+* [`3485dda`](https://github.com/npm/node-semver/commit/3485ddadb2ca0d0691392ee5ce620072e1b1e040) [#866](https://github.com/npm/node-semver/pull/866) bump @npmcli/eslint-config from 6.0.1 to 7.0.0 (#866) (@dependabot[bot])
+
+## [7.8.2](https://github.com/npm/node-semver/compare/v7.8.1...v7.8.2) (2026-06-04)
+### Bug Fixes
+* [`bea6028`](https://github.com/npm/node-semver/commit/bea6028694a75e840f48b288ac019e9644cfe6e8) [#870](https://github.com/npm/node-semver/pull/870) increment dotted prerelease identifiers (#870) (@liuzemei, @SheldonNeo)
+
+## [7.8.1](https://github.com/npm/node-semver/compare/v7.8.0...v7.8.1) (2026-05-21)
+### Bug Fixes
+* [`17aa702`](https://github.com/npm/node-semver/commit/17aa702d91166472b197a2ea768f085083bee2e4) [#869](https://github.com/npm/node-semver/pull/869) strip build metadata before comparator trimming (#869) (@owlstronaut)
+* [`5f3ca13`](https://github.com/npm/node-semver/commit/5f3ca133e040210b6ea80c350a1d61d9da02e722) [#867](https://github.com/npm/node-semver/pull/867) handle prerelease bounds in subset (#867) (@puneetdixit200, Puneet Dixit)
+
+## [7.8.0](https://github.com/npm/node-semver/compare/v7.7.4...v7.8.0) (2026-05-08)
+### Features
+* [`0d0a0a2`](https://github.com/npm/node-semver/commit/0d0a0a2582fb1486bc6cd255ba18819c441ed149) [#855](https://github.com/npm/node-semver/pull/855) Add `truncate` function (#855) (@pjohnmeyer, @owlstronaut)
+### Bug Fixes
+* [`3905343`](https://github.com/npm/node-semver/commit/3905343045dc293c3694d5e46170b1bb1fb5cf58) [#859](https://github.com/npm/node-semver/pull/859) Warn when defaulting to --inc=patch in CLI (@pjohnmeyer)
+### Documentation
+* [`c368af6`](https://github.com/npm/node-semver/commit/c368af612e521767e960419e6388c5129c857984) [#853](https://github.com/npm/node-semver/pull/853) fix typos in documentation (#853) (@ankitkumar572005)
+* [`37776c3`](https://github.com/npm/node-semver/commit/37776c31e2f3448fd852c975888e37b03efe9afe) [#846](https://github.com/npm/node-semver/pull/846) fix BNF grammar to distinguish prerelease from build identifiers (#846) (@abhu85, @claude)
+### Chores
+* [`9542e09`](https://github.com/npm/node-semver/commit/9542e09ebcd89e916777d35eba868061dad9ed7d) [#860](https://github.com/npm/node-semver/pull/860) template-oss-apply (@owlstronaut)
+* [`937bc2c`](https://github.com/npm/node-semver/commit/937bc2cd8721db14745c9be123078c44e77a86ef) [#860](https://github.com/npm/node-semver/pull/860) `template-oss-apply@5.0.0` (@owlstronaut)
+* [`6946fef`](https://github.com/npm/node-semver/commit/6946fefa57bd5e191871a4738b28ca673e003527) [#852](https://github.com/npm/node-semver/pull/852) bump @npmcli/template-oss from 4.29.0 to 4.30.0 (#852) (@dependabot[bot], @npm-cli-bot)
+
+## [7.7.4](https://github.com/npm/node-semver/compare/v7.7.3...v7.7.4) (2026-01-16)
+### Bug Fixes
+* [`a29faa5`](https://github.com/npm/node-semver/commit/a29faa5f3309a01c8e5aeb965fb5c02c4c4e80e2) [#835](https://github.com/npm/node-semver/pull/835) cli: pass options to semver.valid() for loose version validation (#835) (@mldangelo)
+### Documentation
+* [`1d28d5e`](https://github.com/npm/node-semver/commit/1d28d5e82de16163daf721a7c76fff93e0d333ab) [#836](https://github.com/npm/node-semver/pull/836) fix typos and update -n CLI option documentation (#836) (@mldangelo)
+### Dependencies
+* [`120968b`](https://github.com/npm/node-semver/commit/120968b76760cb0db85a72bde2adedd0e9628793) [#840](https://github.com/npm/node-semver/pull/840) `@npmcli/template-oss@4.29.0` (#840)
+### Chores
+* [`44d7130`](https://github.com/npm/node-semver/commit/44d7130c60cedd3703048aa671bb1d659b79ab07) [#824](https://github.com/npm/node-semver/pull/824) bump @npmcli/eslint-config from 5.1.0 to 6.0.0 (#824) (@dependabot[bot])
+* [`7073576`](https://github.com/npm/node-semver/commit/70735767b68a1775eb67ac816b183b4a422101f4) [#820](https://github.com/npm/node-semver/pull/820) reorder parameters in invalid-versions.js test (#820) (@reggi)
+* [`5816d4c`](https://github.com/npm/node-semver/commit/5816d4cfd6d85169527a2bc22fbd5bf4c64f34e3) [#829](https://github.com/npm/node-semver/pull/829) bump @npmcli/template-oss from 4.28.0 to 4.28.1 (#829) (@dependabot[bot], @npm-cli-bot)
+
+## [7.7.3](https://github.com/npm/node-semver/compare/v7.7.2...v7.7.3) (2025-10-06)
+### Bug Fixes
+* [`e37e0ca`](https://github.com/npm/node-semver/commit/e37e0ca0b5fc910d2b1948d25dbc83cc3a0921ea) [#813](https://github.com/npm/node-semver/pull/813) faster paths for compare (#813) (@H4ad)
+* [`2471d75`](https://github.com/npm/node-semver/commit/2471d7543e2e63d9d95358e2405e7e1cde926c36) [#811](https://github.com/npm/node-semver/pull/811) x-range build metadata support (i529015)
+### Chores
+* [`8f05c87`](https://github.com/npm/node-semver/commit/8f05c87f56a4123259b8c6d9324f53eadb02e48f) [#807](https://github.com/npm/node-semver/pull/807) bump @npmcli/template-oss from 4.25.0 to 4.25.1 (#807) (@dependabot[bot], @owlstronaut)
+
+## [7.7.2](https://github.com/npm/node-semver/compare/v7.7.1...v7.7.2) (2025-05-12)
+### Bug Fixes
+* [`fcafb61`](https://github.com/npm/node-semver/commit/fcafb61ed566ff8ccf24818dd94b76738f037aa4) [#780](https://github.com/npm/node-semver/pull/780) add missing `'use strict'` directives (#780) (@Fdawgs)
+* [`c99f336`](https://github.com/npm/node-semver/commit/c99f336fa3bdff465652f9041eab2127d2f52eb2) [#781](https://github.com/npm/node-semver/pull/781) prerelease identifier starting with digits (#781) (@mbtools)
+### Chores
+* [`c760403`](https://github.com/npm/node-semver/commit/c760403b935d3ad35f83e9bbe5ebe1badef2fc71) [#784](https://github.com/npm/node-semver/pull/784) template-oss-apply for workflow permissions (#784) (@wraithgar)
+* [`2677f2a`](https://github.com/npm/node-semver/commit/2677f2a88334b0e728dbfe9ad9f5f57458437c87) [#778](https://github.com/npm/node-semver/pull/778) bump @npmcli/template-oss from 4.23.6 to 4.24.3 (#778) (@dependabot[bot], @npm-cli-bot)
+
 ## [7.7.1](https://github.com/npm/node-semver/compare/v7.7.0...v7.7.1) (2025-02-03)
 ### Bug Fixes
 * [`af761c0`](https://github.com/npm/node-semver/commit/af761c05bd53eef83b5e20f8b09360b0e70557dc) [#764](https://github.com/npm/node-semver/pull/764) inc: fully capture prerelease identifier (#764) (@wraithgar)
